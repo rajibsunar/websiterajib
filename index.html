@@ -1,0 +1,791 @@
+<!DO<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
+  
+    <script src="script1.js" defer></script>
+    <style>  body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: yellowgreen;
+        }
+
+       header {
+        display: flex;
+        justify-content: flex-start; /* Keeps the layout aligned to the left */
+        align-items: center;
+        gap: 19px; /* Added to bring the menu closer to the profile photo */
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 3px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+          .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: Blue;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+       nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.6em; /* Increased font size slightly for better visibility */
+        font-weight: bold;
+        padding: 10px 15px;
+        display: block;
+        transition: color 0.3s;
+    }
+
+        nav ul li a:hover {
+            color: orange;
+        }
+
+        #home {
+            color: green;
+            padding: 100px 20px;
+            text-align: center;
+            background-image: url('img/1.jpg'); /* Add the background image here */
+            background-size: cover; /* Ensures the image covers the whole section */
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Makes the background fixed while scrolling */
+        }
+
+        .home-content h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .home-content p {
+            font-size: 1.2em;
+        }
+         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .welcome-text {
+                margin-bottom: 10px;
+            }
+        }
+
+        #skills, #gallery, #contact {
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        #skills ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #skills ul li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: white;
+        }
+
+        /* YouTube Channel Modal */
+        .youtube-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            z-index: 9999;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .youtube-modal-content {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 1000px;
+            margin: 50px auto;
+            text-align: left;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .youtube-modal h2 {
+            font-size: 2em;
+        }
+
+        .youtube-modal p {
+            font-size: 1.2em;
+        }
+
+        .youtube-modal ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .youtube-modal ul li {
+            text-align: center;
+        }
+
+        .youtube-modal ul li a {
+            color: orange;
+            text-decoration: none;
+        }
+
+        .youtube-modal ul li a:hover {
+            color: white;
+        }
+
+        .youtube-video {
+            display: block;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .youtube-title {
+            margin-top: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .close-modal {
+            background: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+         
+
+
+
+
+
+
+        /* Animations */
+        @keyframes slide-In {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate {
+            animation: slide-In 1.2s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .home-content h1 {
+                font-size: 2.5em;
+            }
+
+            .home-content p {
+                font-size: 1em;
+            }
+        }
+
+
+         /* Adding color and animation to the 'Why do you want to call me?' label */
+        }
+        .contact-form label {
+            color: blue; /* Change to your preferred color */
+            font-size: 1.1em; /* Increase font size for better visibility */
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            animation:  slide-In 3s ease-out; /* Adding animation */
+        }
+
+        /* Animation for the label */
+        @keyframes slide-In {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+         /* Marquee container */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            margin:0;
+            padding:0;
+            margin-bottom:20px;
+            
+        }
+         .welcome-text {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        /* Marquee animation */
+        .marquee {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 40s linear infinite;
+             color:blue;
+             font-weight:bold;
+             font-size:20px;
+              font-family: cursive;
+        }
+      /* Pause animation on hover */
+        .marquee-container:hover .marquee {
+            animation-play-state: paused;
+        }
+         {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ececec;
+            color: #333;
+            font-weight:bold;
+        }
+        body {
+              background: yellow; /* Left side color */
+             }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 60px;
+            background: lightgreen;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: black;
+            text-align: center;
+            text-weight:bold;
+           
+        }
+        .container::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: #ff7eb3; /* Side background color */
+    border-radius: 25px;
+    z-index: -1;
+}
+
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        h1 .highlight {
+            color:blue; /* Gold highlight */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+
+    
+        h1{
+            color:orange;
+            text-align:center;
+            margin:0;/* remove space*/
+            padding:0;
+        }
+         .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: blue;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #ffdf00;
+            transform: translateY(-3px);
+        }
+        /* Animation for a slight bounce effect */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(-10px); }
+            40% { transform: translateY(0); }
+            60% { transform: translateY(-20px); }
+            80% { transform: translateY(0); }
+            100% { transform: translateY(0); }
+        }
+
+        .container h1, .cta-button {
+            animation: bounce 3s ease infinite;
+        }
+
+
+        /* Keyframes for marquee effect */
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        .highlight {
+            color:black;
+            text-align:center;
+            margin: 0px;
+             padding:0;
+            
+        }
+       /* Adding color and animation to the 'Why do you want to call me?' label */
+    .contact-form label {
+    color: blue;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    animation: slide-In 3s ease-out; /* Adding animation */
+}
+
+/* apply css for desigining the text after welcome to my website*/
+  .call-label {
+        font-size: 24px; /* Increase font size */
+        color: blue; /* Change text color */
+        font-weight: bold; /* Make it bold */
+    }
+ h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: black;
+        }
+         h2 .highlight {
+            color:blue; /* Gold highlight */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+
+    
+        h2{
+            color:blue;
+            text-align:left;
+            margin:0;/* remove space*/
+            padding:0;
+        }
+
+
+
+        h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: black;
+        }
+         h3 .highlight {
+            color:blue; /* Gold highlight */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+
+    
+        h3{
+            color:orange;
+            text-align:center;
+            margin:0;/* remove space*/
+            padding:0;
+        }
+
+        h4 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: black;
+        }
+         h4 .highlight {
+            color:blue; /* Gold highlight */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+
+    
+        h4{
+            color:black;
+            text-align:center;
+            margin:0;/* remove space*/
+            padding:0;
+        }
+
+.background-wrapper {
+    background: green;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+.border-box {
+    border: 3px solid green; /* Green border */
+    padding: 15px;
+    margin: 20px auto;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    color: darkgreen;
+    background: white; /* Making it stand out */
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-photo">
+            <img src="img/13.jpg" alt="Profile Photo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+               
+                <li><a href="education.html">Education</a></li>
+                <li><a href="skill.html">Skills</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="javascript:void(0)" id="youtubeLink">YouTube</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=61554207669329&mibextid=ZbWKwL" target="_blank" >Facebook</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+     <div class="marquee-container">
+        <div class="marquee">Hi, I'm Rajib, a passionate developer and YouTuber. My channel, "Technical Tube," is dedicated to sharing knowledge and skills with the world. Explore my journey, skills, and creative work here. Dive into the gallery to see moments of my life. Stay connected through my YouTube and Facebook pages!</div>
+    </div>
+
+    <section id="home">
+        
+        <div class="home-content">
+            <h1 class=" highlight" >Welcome to My Personal Website</h1>
+            <div class="background-wrapper">
+          <div class="container">
+        <h1>Hello! It's Me, <span class="highlight">Rajib</span></h1>
+        <p><strong>I am deeply passionate about sharing knowledge and inspiring others through creativity and learning. 
+                   Over the years, I have dedicated myself to exploring new ideas, honing my skills, and making a meaningful 
+                   impact on the world around me.</strong></p><br>
+
+
+
+        <p><strong>This platform reflects my journey—a space where I share experiences, skills, and projects that have shaped
+                   my path. Thank you for being a part of this journey. Let’s continue to learn, grow, and inspire together!</strong></p>
+        <a href="#" class="cta-button" align="right">Join the Journey</a>
+
+        <div class="border-box">
+            <p>🚀 Passionate Creator | IT Enthusiast | Designer | Explorer</p>
+        </div>
+    </div>
+    </div>
+        </div>
+    </section>
+
+
+    <section id="education">
+        <h2>Education</h2>
+        <ul><strong>
+            <li>Bachelors of Science in Computer Science and Information Technology (B.Sc. CSIT) - Tribhuvan University, 2024</li>
+            <li>High School - Balodoya Higher Secondary School, 2022</li>
+            <li>School Leaving Certificate - Sunrise Preparatory School, 2022</li>
+        </strong>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h3>My Skills</h3>
+        <ul>
+            <li class="skill">Java - Expert in developing scalable applications.</li>
+            <li class="skill">JavaScript - Skilled in creating dynamic web content.</li>
+            <li class="skill">C Programming - Strong foundation in system-level programming.</li>
+            <li class="skill">Web Development - Proficient in HTML, CSS, and modern frameworks.</li>
+        </ul>
+    </section>
+
+    <section id="gallery">
+        <h3>Gallery</h3>
+        <div class="gallery-container">
+            <img src="img/3.jpg" alt="Photo 1 of Rajib">
+            <img src="img/4.jpg" alt="Photo 2 of Rajib">
+            <img src="img/5.jpg" alt="Photo 3 of Rajib">
+            <img src="img/6.jpg" alt="Photo 4 of Rajib">
+            <img src="img/7.jpg" alt="Photo 5 of Rajib">
+            <img src="img/8.jpg" alt="Photo 6 of Rajib">
+            <img src="img/9.jpg" alt="Photo 7 of Rajib">
+            <img src="img/10.jpg" alt="Photo 8 of Rajib">
+            <img src="img/11.jpg" alt="Photo 9 of Rajib">
+            <img src="img/2.jpg" alt="Photo 10 of Rajib">
+        </div>
+
+        
+    </section>
+     <button class="scroll-btn next" onclick="scrollGallery(1)">&#10095;</button>
+    <section id="contact">
+        <h4>Contact</h4>
+        <p>Hi! If you'd like to get in touch, please feel free to contact me. You can reach me via email, phone, or through the form below:</p>
+        
+        <div id="emailContact">
+            <p>Email: <a href="mailto:rajibsunar444@gmail.com">rajibsunar444@gmail.com</a></p>
+        </div>
+
+        <div id="phoneContact">
+            <p>Phone: <span onclick="showCallMessageForm()">+977-9817156473</span></p>
+            <p>Address: Pokhara, Nepal</p>
+        </div>
+
+        <div class="contact-form" id="callMessageForm">
+            <label for="reason" color="blue" font-size="40px" >Why do you want to call me? <textarea id="reason" rows="2" placeholder="Please specify your reason"></textarea>
+            <button onclick="makeCall()">Call</button>
+            <button onclick="sendMessage()">Message</button></label><br>
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed by Rajib</p>
+    </footer>
+
+    
+    <!-- YouTube Modal -->
+    <div id="youtubeModal" class="youtube-modal">
+        <div class="youtube-modal-content">
+            <h2>Welcome to my YouTube Channel</h2>
+            <p>Hi! I'm Rajib, and on my channel "Technical Tube," I share tech tutorials, coding tips, and more! Don't forget to subscribe and stay updated with my latest videos.</p>
+            <p><strong>Recent Videos:</strong></p>
+            <ul>
+                <li>
+                    <a href="https://youtu.be/XuXC8lI_b80?si=QahrzMkUTXRHKnhf" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/XuXC8lI_b80/0.jpg" alt="Video 1 Thumbnail">
+                        <div class="youtube-title">Balloon Festival uncle rw dai haru sabai milerw ramailo gardai </div>
+                          <div class="view-count" id="viewCount-XuXC8lI_b80">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/8WknkV_jFhs?si=6bTZKehvzpDFm4a7" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/8WknkV_jFhs/0.jpg" alt="Video 2 Thumbnail">
+                        <div class="youtube-title">Rastriya parichaya patra ko biometric form lost.How to find National Identity card form lost.</div>
+                         <div class="view-count" id="viewCount-8WknkV_jFhs">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/RZIsG7d_ccE?si=P_uyIyNxI0yG6vpr" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/RZIsG7d_ccE/0.jpg" alt="Video 3 Thumbnail">
+                        <div class="youtube-title">CHATGPT सँग नेपाली भाषामा कसरी कुरा गर्ने - How to talk with chatgpt in nepali language</div>
+                        <div class="view-count" id="viewCount-RZIsG7d_ccE">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/b4Dw5C7s6gU?si=vbRA17bR2ynMkWcY" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/b4Dw5C7s6gU/0.jpg" alt="Video 4 Thumbnail">
+                        <div class="youtube-title">Nepali Wedding Banner Design Photoshop | Photoshop Tutorial</div>
+                          <div class="view-count" id="viewCount-b4Dw5C7s6gU">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/961mJIpvOeM?si=DVJ2lDzmIHWj76yT" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/961mJIpvOeM/0.jpg" alt="Video 5 Thumbnail">
+                        <div class="youtube-title">How to check the National ID card print or not. राष्ट्रिय परिचयपत्र प्रिन्ट छ वा छैन कसरी जाँच गर्ने?</div>
+                        <div class="view-count" id="viewCount-961mJIpvOeM">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/TdLTgW9DQMI?si=knjCmdxR0h4kc20S" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/TdLTgW9DQMI/0.jpg" alt="Video 6 Thumbnail">
+                        <div class="youtube-title">How to verify pi network in nepal ?pi kyc verify full process.pi network ma kyc kasari garne ?</div>
+                         <div class="view-count" id="viewCount-TdLTgW9DQMI">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/iXUTz2pGzVw?si=72KccXv7uqx4OJy3" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/iXUTz2pGzVw/0.jpg" alt="Video 7 Thumbnail">
+                        <div class="youtube-title">How to activate window 10.Remove watermark.</div>
+                         <div class="view-count" id="viewCount-iXUTz2pGzVw">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/Glh-xe6wMUM?si=VZdhZy_10eXK84Fp" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/Glh-xe6wMUM/0.jpg" alt="Video 8 Thumbnail">
+                        <div class="youtube-title">MDMS Registration New process. How to Register the New Mobile in MDMS.</div>
+                          <div class="view-count" id="viewCount-Glh-xe6wMUM">Views: 0</div>
+                    </a>
+                </li>
+                <li>
+                <a href="https://youtu.be/Mly2M93kGpk?si=AATaEbypl45pAbJH" target="_blank">
+                  <img class="youtube-video" src="https://img.youtube.com/vi/Mly2M93kGpk/0.jpg" alt="video 9 thumbnail">
+                  <div class="youtube-title">How to recover your hacked facebook Account.Hack भएको facebook Account Recover गर्ने सजिलो तरेिका ।。</div>
+                  <div class="view-count" id="viewCount-Mly2M93kGpk">Views: 0</div>
+                </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/EvXRkrl-ugQ?si=RGVyl7erbfuiUqRF" target="_blank">
+                        <img class="youtube-video" src="https://img.youtube.com/vi/EvXRkrl-ugQ/0.jpg" alt="Video 10 Thumbnail">
+                        <div class="youtube-title">Driving license ko form कसरी fill up garney tw online bata.सजिलो र सरल तरिका with detail</div>
+                        
+                    </a>
+                </li>
+               
+               <li>
+                <a href="https://youtu.be/fWcQPiSzg0s" target="blank">
+                <img class="youtube-video" src="https://img.youtube.com/vi/fWcQPiSzg0s/0.jpg" alt="video_11 Thumbnail">
+                <div class=" youtube-title"> Photoshop Training Day-2 </div>
+                <div class="view-count" id="viewCount-fWcQPiSzg0s">Views: 0</div>
+            </a>
+        </li>
+
+
+
+            </ul>
+            <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("youtubeLink").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("youtubeModal").style.display = "block";
+        });
+
+        function closeModal() {
+            document.getElementById("youtubeModal").style.display = "none";
+        }
+           let count = localStorage.getItem("page_views") || 0;sublime
+        count++; // Increment count
+        localStorage.setItem("page_views", count); // Save to localStorage
+        document.getElementById("viewCount").innerText = count;
+
+    </script>
+    
+<!-- Footer -->
+<footer style="position: fixed; bottom: 0; width: 100%; background: #333; color: white; padding: 10px;">
+    <div style="display: flex; justify-content: center; align-items: center; position: relative;">
+        <!-- Homepage Views (Left) -->
+        <p style="position: absolute; left: 15px; margin: 0; font-size: 14px;">Views: <span id="viewCount">Loading...</span></p>
+        
+        <!-- Design by Rajib (Centered) -->
+        <p style="margin: 0; font-size: 20px; font-weight: bold; color: blue;">Design by Rajib</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the current view count from LocalStorage
+        let views = localStorage.getItem("pageViews");
+
+        // If no count exists, initialize it to 0
+        if (!views) {
+            views = 0;
+        } else {
+            views = parseInt(views); // Convert string to number
+        }
+
+        // Increment view count
+        views++;
+
+        // Save the updated count
+        localStorage.setItem("pageViews", views);
+
+        // Display the count in the footer
+        document.getElementById("viewCount").textContent = views;
+    });
+</script>
+</body>
+</html>

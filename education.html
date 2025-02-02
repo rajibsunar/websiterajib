@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Rajib Sunar</title>
+
+    <!-- CSS Styling -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Font Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: black;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color:lightgreen;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header .profile-photo img {
+            align:left;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 50px;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        /* Animation for Education Link */
+        nav ul li a#educationLink {
+            display: inline-block;
+        }
+
+        /* Yellow Color for Education Link */
+        nav ul li a#educationLink span {
+            opacity: 0;
+            display: inline-block;
+            animation: revealLetters 2s ease forwards;
+            color: orange;  /* Set color to yellow */
+        }
+
+        nav ul li a#educationLink span:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        nav ul li a#educationLink span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        nav ul li a#educationLink span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        nav ul li a#educationLink span:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        nav ul li a#educationLink span:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        nav ul li a#educationLink span:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+        nav ul li a#educationLink span:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+        nav ul li a#educationLink span:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+        nav ul li a#educationLink span:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+        nav ul li a#educationLink span:nth-child(10) {
+            animation-delay: 1s;
+        }
+
+        @keyframes revealLetters {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        /* Main Content Section */
+        main {
+            padding: 2rem;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        ul {
+            padding-left: 30px;
+        }
+
+        ul li {
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: blue;
+            color: white;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="profile-photo">
+        <img src="img/13.jpg" alt="Profile Photo"> <!-- Profile Image -->
+    </div>
+    <nav>
+        <ul>
+            <li><a href="javascript:void(0)" id="educationLink">
+                <span>E</span><span>d</span><span>u</span><span>c</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span>
+            </a></li> <!-- Only Education Link with Animation -->
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="education">
+        <h2>My Education</h2>
+        <ul>
+            <li><strong>Bachelors of Science in Computer Science and Information Technology (B.Sc. CSIT)</strong> - Tribhuvan University, 2024</li>
+            <li><strong>High School</strong> - Balodoya Higher Secondary School, 2022</li>
+            <li><strong>School Leaving Certificate (SLC)</strong> - Sunrise Preparatory School, 2022</li>
+        </ul>
+    </section>
+</main>
+      <a href="pswe website.html" class="back-btn">Back to Home</a>
+<footer>
+    <p>Designed by Rajib Sunar</p>
+</footer>
+
+</body>
+</html>
